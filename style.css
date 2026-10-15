@@ -1,0 +1,46 @@
+:root{
+  --bg:#eef2f6;--surface:#fff;--ink:#12202f;--muted:#5b6b7b;--line:#c9d4df;
+  --accent:#1b4fd8;--on-accent:#fff;--ok:#1f8f4e;--dup:#c73535;--nf:#b86a00;--idle:#3a4a5c;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f0f10;--surface:#686868;--ink:#e8eef5;--muted:#b8b8b8;--line:#515151;
+  --accent:#4ac833;--on-accent:#0b1220;--idle:#373737;color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#0f1822;--surface:#172433;--ink:#e8eef5;--muted:#93a4b6;--line:#2c3d50;
+  --accent:#7aa0ff;--on-accent:#0b1220;--idle:#2c3d50;color-scheme:dark;}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.45 "Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif}
+header{padding:20px 16px 4px;max-width:1100px;margin:0 auto}
+h1{margin:0;font-size:28px;font-weight:800;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:2px 0 0}
+main{display:grid;gap:16px;padding:16px;max-width:1100px;margin:0 auto}
+@media(min-width:860px){main{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:start}}
+.card{background:var(--surface);border:2px dashed var(--line);border-radius:14px;padding:14px;min-width:0}
+h2{margin:0 0 10px;font-size:17px;font-weight:600}
+.view{position:relative;background:#000;border-radius:10px;overflow:hidden;aspect-ratio:4/3}
+video{width:100%;height:100%;object-fit:cover;display:block}
+.empty{position:absolute;inset:0;display:grid;place-items:center;color:#aab6c3;text-align:center;padding:20px}
+.banner{margin-top:12px;border-radius:10px;padding:14px 16px;font-size:20px;font-weight:800;background:var(--idle);color:#fff;min-height:56px;display:flex;align-items:center}
+.banner.ok{background:var(--ok)}.banner.dup{background:var(--dup)}.banner.nf{background:var(--nf)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+button,.btn{font:inherit;font-weight:600;border:2px solid var(--accent);background:transparent;color:var(--accent);border-radius:10px;padding:10px 14px;cursor:pointer;min-height:44px}
+button.primary{background:var(--accent);color:var(--on-accent)}
+button:focus-visible,input:focus-visible,.btn:focus-within{outline:3px solid var(--accent);outline-offset:2px}
+button.danger{border-color:var(--dup);color:var(--dup)}
+button[hidden]{display:none}
+input[type=text]{font:inherit;flex:1;min-width:120px;padding:10px 12px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);min-height:44px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+.note{color:var(--muted);font-size:14px;margin:8px 0 0}
+.wrap{max-height:340px;overflow:auto;overflow-x:auto;margin-top:12px;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{position:sticky;top:0;background:var(--surface);font-weight:600;color:var(--muted)}
+td.id{font-variant-numeric:tabular-nums;font-weight:600}
+.none{padding:18px;color:var(--muted)}
+.counts{display:flex;gap:18px;flex-wrap:wrap;margin:0 0 4px}
+.counts b{font-size:26px;font-weight:800;display:block;line-height:1.1}
+.counts span{color:var(--muted);font-size:14px}
+.toast{min-height:22px;color:var(--muted);font-size:14px;margin:8px 0 0}

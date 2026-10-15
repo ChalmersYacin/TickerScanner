@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ticket scanner</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>DatE-IT Ticket scanner</h1>
+  <p class="sub">Scan each ticket once, then export the list to Excel.</p>
+</header>
+<main>
+  <section class="card" aria-label="Scanner">
+    <div class="view">
+      <video id="v" playsinline muted></video>
+      <div class="empty" id="empty">Camera is off. Press Start camera and point it at a ticket's QR code.</div>
+    </div>
+    <div class="banner" id="banner" role="status" aria-live="polite">Ready</div>
+    <div class="row">
+      <button class="primary" id="startBtn">Start camera</button>
+      <button id="stopBtn" hidden>Stop camera</button>
+    </div>
+    <div class="row">
+      <input type="text" id="manual" placeholder="Type a ticket ID, for example 014" aria-label="Ticket ID" autocomplete="off">
+      <button id="addBtn">Add ticket</button>
+    </div>
+    <p class="note" id="engine"></p>
+  </section>
+
+  <section style="display:grid;gap:16px;min-width:0">
+    <div class="card">
+      <h2>Ticket list</h2>
+      <div class="row" style="margin-top:0">
+        <label class="btn" style="position:relative;display:inline-flex;align-items:center">Load ticketsaver.csv<input type="file" id="file" accept=".csv,.txt,text/csv"></label>
+        <button id="noList" hidden>Remove list</button>
+      </div>
+      <p class="note" id="listNote"></p>
+    </div>
+
+    <div class="card">
+      <div class="counts">
+        <div><b id="nScans">0</b><span>tickets scanned</span></div>
+        <div><b id="nComp">0</b><span>companies</span></div>
+      </div>
+      <div class="row">
+        <button class="primary" id="dl">Download Excel</button>
+        <button id="copy">Copy for Excel</button>
+        <button class="danger" id="clear">Clear all scans</button>
+      </div>
+      <p class="toast" id="toast"></p>
+      <div class="wrap" id="logWrap"></div>
+      <h2 style="margin-top:16px">People per company</h2>
+      <div class="wrap" id="sumWrap"></div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
